@@ -54,22 +54,6 @@ function setup() {
    frameRate(15);
    createCanvas(matrix[0].length * side, matrix.length * side);
    background('#acacac');
-//    for (let x = 0; x < matrix.length; x++) {
-//     for (let y = 0; y < matrix[0].length; y++) {
-//         if (matrix[x][y]==1) {
-//             new Grass(x,y);
-//         }
-        
-//     }
-// } 
-//  for (let x = 0; x < matrix.length; x++) {
-//     for (let y = 0; y < matrix[0].length; y++) {
-//         if (matrix[x][y]==2) {
-//             new GrassEater(x,y);
-//         }
-        
-//     }
-//}
    console.log(matrix);
 }
 
