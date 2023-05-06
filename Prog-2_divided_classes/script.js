@@ -49,7 +49,7 @@ var allEaterArr = [];
 var predatorArr = [];
 
 function setup() {
-  generator(5, 25, 0, 0, 0);
+  generator(25, 10, 10, 5, 10);
   frameRate(15);
   createCanvas(matrix[0].length * side, matrix.length * side);
   background("#acacac");

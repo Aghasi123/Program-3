@@ -1,4 +1,4 @@
-class GrassEater  extends Animals{
+class GrassEater extends Animals{
   constructor(x, y){
     super(x, y);
     this.energy = 15;
