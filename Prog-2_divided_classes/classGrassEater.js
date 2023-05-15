@@ -32,7 +32,6 @@ class GrassEater extends Animals{
       const newX = eatCells[0];
       const newY = eatCells[1];
       matrix[newY][newX] = 2;
-
       matrix[this.y][this.x] = 0;
       this.x = newX;
       this.y = newY;
@@ -87,6 +86,8 @@ class GrassEater extends Animals{
 
   move() {
     const newCell = random(this.chooseCell(0));
+      // console.log(newCell);
+
     if (newCell) {
       const newX = newCell[0];
       const newY = newCell[1];
