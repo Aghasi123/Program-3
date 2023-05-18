@@ -51,7 +51,7 @@ var witherArr=[];
 var bulletArr=[];
 
 function setup() {
-  generator(10, 5, 5,5, 2,1);
+  generator(10, 5, 5,5, 2,3);
   frameRate(15);
   createCanvas(matrix[0].length * side, matrix.length * side);
   background("#acacac");

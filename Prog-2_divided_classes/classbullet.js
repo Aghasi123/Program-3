@@ -76,6 +76,62 @@ class Bullet extends Wither{
                 }
               }
         }
+        if (grassEater) {
+            var newX = grassEater[0];
+            var newY = grassEater[1];
+            matrix[newY][newX] = 7;
+            matrix[this.y][this.x] = 0;
+            this.x = newX;
+            this.y = newY;
+            for (let i in grassEaterArr) {
+                if (newX == grassEaterArr[i].x && newY == grassEaterArr[i].y) {
+                    grassEaterArr.splice(i, 1);
+                  break;
+                }
+              }
+        }
+        if (hardGrass) {
+            var newX = hardGrass[0];
+            var newY = hardGrass[1];
+            matrix[newY][newX] = 7;
+            matrix[this.y][this.x] = 0;
+            this.x = newX;
+            this.y = newY;
+            for (let i in hardGrassArr) {
+                if (newX == hardGrassArr[i].x && newY == hardGrassArr[i].y) {
+                    hardGrassArr.splice(i, 1);
+                  break;
+                }
+              }
+        }
+        if (allEater) {
+            var newX = allEater[0];
+            var newY = allEater[1];
+            matrix[newY][newX] = 7;
+            matrix[this.y][this.x] = 0;
+            this.x = newX;
+            this.y = newY;
+            for (let i in allEaterArr) {
+                if (newX == allEaterArr[i].x && newY == allEaterArr[i].y) {
+                    allEaterArr.splice(i, 1);
+                  break;
+                }
+              }
+        }
+        if (predator) {
+            var newX = predator[0];
+            var newY = predator[1];
+            matrix[newY][newX] = 7;
+            matrix[this.y][this.x] = 0;
+            this.x = newX;
+            this.y = newY;
+            for (let i in predatorArr) {
+                if (newX == predatorArr[i].x && newY == predatorArr[i].y) {
+                    predatorArr.splice(i, 1);
+                  break;
+                }
+              }
+        }
         if(theEnd){
             console.log("you reached to the end");
             matrix[this.y][this.x] = 0;
