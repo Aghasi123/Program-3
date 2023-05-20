@@ -1,92 +1,92 @@
-var matrix = [
-  [],
-  [],
-  [],
-  [],
-  [],
-  [],
-  [],
-  [],
-  [],
-  [],
-  [],
-  [],
-  [],
-  [],
-  [],
-  [],
-  [],
-  [],
-  [],
-  [],
-  [],
-  [],
-  [],
-  [],
-  [],
-  [],
-  [],
-  [],
-  [],
-  [],
-  [],
-  [],
-  [],
-  [],
-  [],
-  [],
-  [],
-  [],
-  [],
-  [],
-];
+// var matrix = [
+//   [],
+//   [],
+//   [],
+//   [],
+//   [],
+//   [],
+//   [],
+//   [],
+//   [],
+//   [],
+//   [],
+//   [],
+//   [],
+//   [],
+//   [],
+//   [],
+//   [],
+//   [],
+//   [],
+//   [],
+//   [],
+//   [],
+//   [],
+//   [],
+//   [],
+//   [],
+//   [],
+//   [],
+//   [],
+//   [],
+//   [],
+//   [],
+//   [],
+//   [],
+//   [],
+//   [],
+//   [],
+//   [],
+//   [],
+//   [],
+// ];
 
 var side = 20;
-var grassArr = [];
-var grassEaterArr = [];
-var hardGrassArr = [];
-var allEaterArr = [];
-var predatorArr = [];
-var witherArr=[];
-var bulletArr=[];
+// var grassArr = [];
+// var grassEaterArr = [];
+// var hardGrassArr = [];
+// var allEaterArr = [];
+// var predatorArr = [];
+// var witherArr=[];
+// var bulletArr=[];
 
 function setup() {
-  generator(10, 5, 5,5, 2,3);
-  frameRate(15);
+  // generator(10, 5, 5,5, 2,3);
+  // frameRate(15);
   createCanvas(matrix[0].length * side, matrix.length * side);
   background("#acacac");
-  for (let y = 0; y < matrix.length; y++) {
-    for (let x = 0; x < matrix[0].length; x++) {
-        if (matrix[y][x] == 1){
-            let gr = new Grass(x, y);
-            grassArr.push(gr);
-        }
-        else if (matrix[y][x] == 2){
-            let eater = new GrassEater(x, y);
-            grassEaterArr.push(eater);
-        }
-        else if (matrix[y][x] == 3){
-            let hardGrass = new HardGrass(x, y);
-            hardGrassArr.push(hardGrass);
-        }
-        else if (matrix[y][x] == 4){
-            let allEater = new AllEater(x, y);
-            allEaterArr.push(allEater);
-        }
-        else if (matrix[y][x] == 5){
-            let predator = new Predator(x, y);
-            predatorArr.push(predator);
-        }
-        else if (matrix[y][x] == 6){
-          let wither = new Wither(x, y);
-          witherArr.push(wither);
-        }
-        else if (matrix[y][x] == 7){
-          let bullet = new Bullet(x, y);
-          bulletArr.push(bullet);
-        }
-    }
-}
+//   for (let y = 0; y < matrix.length; y++) {
+//     for (let x = 0; x < matrix[0].length; x++) {
+//         if (matrix[y][x] == 1){
+//             let gr = new Grass(x, y);
+//             grassArr.push(gr);
+//         }
+//         else if (matrix[y][x] == 2){
+//             let eater = new GrassEater(x, y);
+//             grassEaterArr.push(eater);
+//         }
+//         else if (matrix[y][x] == 3){
+//             let hardGrass = new HardGrass(x, y);
+//             hardGrassArr.push(hardGrass);
+//         }
+//         else if (matrix[y][x] == 4){
+//             let allEater = new AllEater(x, y);
+//             allEaterArr.push(allEater);
+//         }
+//         else if (matrix[y][x] == 5){
+//             let predator = new Predator(x, y);
+//             predatorArr.push(predator);
+//         }
+//         else if (matrix[y][x] == 6){
+//           let wither = new Wither(x, y);
+//           witherArr.push(wither);
+//         }
+//         else if (matrix[y][x] == 7){
+//           let bullet = new Bullet(x, y);
+//           bulletArr.push(bullet);
+//         }
+//     }
+// }
 }
 
 function draw() {
@@ -116,25 +116,25 @@ function draw() {
 
 
 
-  for (let i in grassArr) {
-    grassArr[i].mul();
-  }
-  for (let i in grassEaterArr) {
-    grassEaterArr[i].eat();
-  }
-  for (let i in hardGrassArr) {
-    hardGrassArr[i].move();
-  }
-  for (let i in allEaterArr) {
-    allEaterArr[i].shot();
-  }
-  for (let i in predatorArr) {
-    predatorArr[i].eat();
-  }
-  for (let i in witherArr) {
-    witherArr[i].shot();
-  }
-  for (let i in bulletArr) {
-    bulletArr[i].move();
-  }
+  // for (let i in grassArr) {
+  //   grassArr[i].mul();
+  // }
+  // for (let i in grassEaterArr) {
+  //   grassEaterArr[i].eat();
+  // }
+  // for (let i in hardGrassArr) {
+  //   hardGrassArr[i].move();
+  // }
+  // for (let i in allEaterArr) {
+  //   allEaterArr[i].shot();
+  // }
+  // for (let i in predatorArr) {
+  //   predatorArr[i].eat();
+  // }
+  // for (let i in witherArr) {
+  //   witherArr[i].shot();
+  // }
+  // for (let i in bulletArr) {
+  //   bulletArr[i].move();
+  // }
 }

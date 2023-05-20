@@ -1,4 +1,5 @@
-class Predator extends Animals{
+const Animals=require("./classAnimals.js");
+module.exports=class Predator extends Animals{
   constructor(x, y) {
     super(x,y)
     this.energy = 18;
@@ -22,13 +23,13 @@ class Predator extends Animals{
   }
   whateat() {
     var cell = [1, 2, 3];
-    var choose = random(cell);
+    var choose = this.random(cell);
     return choose;
   }
   eat() {
-    const eatCells = random(this.chooseCell(1));
-    const eatGrassEater = random(this.chooseCell(2));
-    const eatHardGrass = random(this.chooseCell(3));
+    const eatCells = this.random(this.chooseCell(1));
+    const eatGrassEater = this.random(this.chooseCell(2));
+    const eatHardGrass = this.random(this.chooseCell(3));
     if (eatCells && this.whateat() == 1) {
       const newX = eatCells[0];
       const newY = eatCells[1];
@@ -89,7 +90,7 @@ class Predator extends Animals{
     }
   }
   mul() {
-    const newCell = random(this.chooseCell(0));
+    const newCell = this.random(this.chooseCell(0));
     if (this.multiplay >= 15 && newCell) {
       const newPredator= new Predator(newCell[0], newCell[1]);
       matrix[newCell[1]][newCell[0]]=5;
@@ -100,7 +101,7 @@ class Predator extends Animals{
   }
 
   move() {
-    const newCell = random(this.chooseCell(0));
+    const newCell = this.random(this.chooseCell(0));
     if (newCell) {
       const newX = newCell[0];
       const newY = newCell[1];

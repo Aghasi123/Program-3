@@ -1,4 +1,5 @@
-class AllEater extends Animals{
+const Animals=require("./classAnimals.js");
+module.exports=class AllEater extends Animals{
   constructor(x, y) {
     super(x,y)
     this.multiplay = 0;
@@ -30,7 +31,7 @@ class AllEater extends Animals{
   }
   chooseWay() {
     var way = [0, 1];
-    var choose = random(way);
+    var choose = this.random(way);
     return choose;
   }
   shot() {

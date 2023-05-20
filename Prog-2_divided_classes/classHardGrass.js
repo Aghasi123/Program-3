@@ -1,4 +1,5 @@
-class HardGrass extends Animals{
+const Animals=require("./classAnimals.js");
+module.exports=class HardGrass extends Animals{
   constructor(x, y){
     super(x, y);
     this.multiplay = 0;
@@ -26,11 +27,11 @@ class HardGrass extends Animals{
       }
   whereGo() {
     var cell = [0, 1];
-    var choose = random(cell);
+    var choose = this.random(cell);
     return choose;
   }
   mul() {
-    const newCell = random(this.chooseCell(this.whereGo()));
+    const newCell = this.random(this.chooseCell(this.whereGo()));
     if (this.multiplay >= 5 && newCell) {
       const newhardgrass = new HardGrass(newCell[0], newCell[1]);
       matrix[newCell[1]][newCell[0]]=3;
@@ -41,7 +42,7 @@ class HardGrass extends Animals{
   }
   move() {
     const choose = this.whereGo();
-    const newCell = random(this.chooseCell(choose));
+    const newCell = this.random(this.chooseCell(choose));
     if (this.slowness >= 15 && newCell) {
       const newX = newCell[0];
       const newY = newCell[1];

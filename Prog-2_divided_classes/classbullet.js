@@ -1,4 +1,5 @@
-class Bullet extends Wither{
+const Wither=require("./classWither.js");
+module.exports=class Bullet extends Wither{
     constructor(x,y,direction){
         super(x,y);
         this.direction=direction;

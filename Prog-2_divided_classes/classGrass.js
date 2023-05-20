@@ -1,6 +1,7 @@
-class Grass extends Animals{
+const Animals=require("./classAnimals.js");
+module.exports=class Grass extends Animals{
   mul() {
-      let newCell = random(this.chooseCell(0));
+      let newCell = this.random(this.chooseCell(0));
       if (this.multiplay >= 4 && newCell) {
           let grass = new Grass(newCell[0], newCell[1]);
           matrix[newCell[1]][newCell[0]] = 1;
@@ -10,3 +11,4 @@ class Grass extends Animals{
       this.multiplay++;
     }
 }
+

@@ -1,4 +1,5 @@
-class Wither extends Animals{
+const Animals=require("./classAnimals.js");
+module.exports=class Wither extends Animals{
   constructor(x,y){
     super(x,y);
     this.delay=0;

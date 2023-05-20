@@ -1,4 +1,5 @@
-class GrassEater extends Animals{
+const Animals=require("./classAnimals.js");
+module.exports=class GrassEater extends Animals{
   constructor(x, y){
     super(x, y);
     this.energy = 15;
@@ -22,12 +23,12 @@ class GrassEater extends Animals{
       }
   whateat() {
     var cell = [1, 3];
-    var choose = random(cell);
+    var choose = this.random(cell);
     return choose;
   }
   eat() {
-    const eatCells = random(this.chooseCell(1));
-    const eatHardGrass = random(this.chooseCell(3));
+    const eatCells = this.random(this.chooseCell(1));
+    const eatHardGrass = this.random(this.chooseCell(3));
     if (eatCells && this.whateat() == 1) {
       const newX = eatCells[0];
       const newY = eatCells[1];
@@ -74,7 +75,7 @@ class GrassEater extends Animals{
     }
   }
   mul() {
-    let newCell = random(this.chooseCell(0));
+    let newCell = this.random(this.chooseCell(0));
     if (this.multiplay >= 15 && newCell) {   
       let newGrassEater = new GrassEater(newCell[0], newCell[1]);
       matrix[newCell[1]][newCell[0]]=2;
@@ -85,7 +86,7 @@ class GrassEater extends Animals{
   }
 
   move() {
-    const newCell = random(this.chooseCell(0));
+    const newCell = this.random(this.chooseCell(0));
       // console.log(newCell);
 
     if (newCell) {
