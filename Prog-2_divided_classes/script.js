@@ -1,95 +1,12 @@
-// var matrix = [
-//   [],
-//   [],
-//   [],
-//   [],
-//   [],
-//   [],
-//   [],
-//   [],
-//   [],
-//   [],
-//   [],
-//   [],
-//   [],
-//   [],
-//   [],
-//   [],
-//   [],
-//   [],
-//   [],
-//   [],
-//   [],
-//   [],
-//   [],
-//   [],
-//   [],
-//   [],
-//   [],
-//   [],
-//   [],
-//   [],
-//   [],
-//   [],
-//   [],
-//   [],
-//   [],
-//   [],
-//   [],
-//   [],
-//   [],
-//   [],
-// ];
-
+let socket=io();
+const ashun = document.getElementById("ashun")
 var side = 20;
-// var grassArr = [];
-// var grassEaterArr = [];
-// var hardGrassArr = [];
-// var allEaterArr = [];
-// var predatorArr = [];
-// var witherArr=[];
-// var bulletArr=[];
-
 function setup() {
-  // generator(10, 5, 5,5, 2,3);
-  // frameRate(15);
-  createCanvas(matrix[0].length * side, matrix.length * side);
+  createCanvas(40 * side, 40 * side);
   background("#acacac");
-//   for (let y = 0; y < matrix.length; y++) {
-//     for (let x = 0; x < matrix[0].length; x++) {
-//         if (matrix[y][x] == 1){
-//             let gr = new Grass(x, y);
-//             grassArr.push(gr);
-//         }
-//         else if (matrix[y][x] == 2){
-//             let eater = new GrassEater(x, y);
-//             grassEaterArr.push(eater);
-//         }
-//         else if (matrix[y][x] == 3){
-//             let hardGrass = new HardGrass(x, y);
-//             hardGrassArr.push(hardGrass);
-//         }
-//         else if (matrix[y][x] == 4){
-//             let allEater = new AllEater(x, y);
-//             allEaterArr.push(allEater);
-//         }
-//         else if (matrix[y][x] == 5){
-//             let predator = new Predator(x, y);
-//             predatorArr.push(predator);
-//         }
-//         else if (matrix[y][x] == 6){
-//           let wither = new Wither(x, y);
-//           witherArr.push(wither);
-//         }
-//         else if (matrix[y][x] == 7){
-//           let bullet = new Bullet(x, y);
-//           bulletArr.push(bullet);
-//         }
-//     }
-// }
 }
 
-function draw() {
+function drawGame(matrix) {
   for (let i = 0; i < matrix.length; i++) {
     for (let j = 0; j < matrix[0].length; j++) {
       if (matrix[i][j] == 1) {
@@ -112,29 +29,13 @@ function draw() {
       rect(j * side, i * side, side, side);
     }
   }
-
-
-
-
-  // for (let i in grassArr) {
-  //   grassArr[i].mul();
-  // }
-  // for (let i in grassEaterArr) {
-  //   grassEaterArr[i].eat();
-  // }
-  // for (let i in hardGrassArr) {
-  //   hardGrassArr[i].move();
-  // }
-  // for (let i in allEaterArr) {
-  //   allEaterArr[i].shot();
-  // }
-  // for (let i in predatorArr) {
-  //   predatorArr[i].eat();
-  // }
-  // for (let i in witherArr) {
-  //   witherArr[i].shot();
-  // }
-  // for (let i in bulletArr) {
-  //   bulletArr[i].move();
-  // }
 }
+
+ashun.addEventListener("click",()=>{
+  socket.emit("send signal", "ashun")
+})
+socket.on("send matrix", drawGame)
+socket.on("send statistics", (statistics)=>{
+  let h1=document.getElementById("state");
+  h1.innerText=JSON.stringify(statistics,undefined,2);
+})

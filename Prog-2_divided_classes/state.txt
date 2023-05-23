@@ -1,0 +1,1 @@
+{"grassCount":1657,"grassEaterCount":0,"hardGrassCount":0,"allEaterCount":1,"predatorCount":339,"witherCount":3}

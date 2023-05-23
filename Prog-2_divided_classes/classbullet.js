@@ -1,5 +1,6 @@
 const Wither=require("./classWither.js");
-module.exports=class Bullet extends Wither{
+const Animals=require("./classAnimals");
+module.exports=class Bullet extends Animals{
     constructor(x,y,direction){
         super(x,y);
         this.direction=direction;
@@ -134,7 +135,7 @@ module.exports=class Bullet extends Wither{
               }
         }
         if(theEnd){
-            console.log("you reached to the end");
+            // console.log("you reached to the end");
             matrix[this.y][this.x] = 0;
             for (var i in bulletArr) {
                 if (this.x == bulletArr[i].x && this.y == bulletArr[i].y) {
