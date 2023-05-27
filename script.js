@@ -1,5 +1,8 @@
 let socket=io();
 const ashun = document.getElementById("ashun")
+const dzmer = document.getElementById("dzmer")
+const garun = document.getElementById("garun")
+const amar = document.getElementById("amar")
 var side = 20;
 function setup() {
   createCanvas(40 * side, 40 * side);
@@ -33,6 +36,15 @@ function drawGame(matrix) {
 
 ashun.addEventListener("click",()=>{
   socket.emit("send signal", "ashun")
+})
+dzmer.addEventListener("click",()=>{
+  socket.emit("send signal", "dzmer")
+})
+garun.addEventListener("click",()=>{
+  socket.emit("send signal", "garun")
+})
+amar.addEventListener("click",()=>{
+  socket.emit("send signal", "amar")
 })
 socket.on("send matrix", drawGame)
 socket.on("send statistics", (statistics)=>{

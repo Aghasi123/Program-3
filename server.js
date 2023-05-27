@@ -138,12 +138,24 @@ let id = setInterval(playGame, speed)
 
 io.on("connection",function(socket){
   socket.on("send signal",(data)=>{
-    if(data === "ashun"){
-    clearInterval(id)
-      speed = 300  
-      setInterval(playGame,speed)
-      // console.log(speed);
+    if(data === "ashun" && speed!=300){
+      clearInterval(id);
+      speed = 300;
+      setInterval(playGame,speed);
+    }else if(data === "dzmer" && speed!=400){
+      clearInterval(id);
+      speed = 400;  
+      setInterval(playGame,speed);
+    }else if(data === "garun" && speed!=200){
+      clearInterval(id);
+      speed = 200;  
+      setInterval(playGame,speed);
+    }else if(data === "amar" && speed!=100){
+      clearInterval(id);
+      speed = 100;  
+      setInterval(playGame,speed);
     }
+    console.log(speed);
   })
   
 setInterval(()=>{
