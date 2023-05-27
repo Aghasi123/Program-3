@@ -9,6 +9,7 @@ var AllEater = require("./classAllEater");
 var Predator = require("./classPredator");
 var Wither = require("./classWither");
 var Bullet = require("./classbullet");
+var Lightning = require("./classLightning");
 var fs=require("fs");
 
 app.use(express.static("."));
@@ -70,7 +71,9 @@ function generator(grass, grassEater, hardGrass, alleater, predator, wither, mat
   io.emit("send matrix", matrix);
 }
 
-generator(15, 10, 10, 5, 7, 3, 40);
+// generator(15, 10, 10, 5, 7, 3, 40);
+generator(0, 0, 0, 0, 0, 0, 40);
+
 
 function createObj() {
   for (let y = 0; y < matrix.length; y++) {
@@ -141,21 +144,20 @@ io.on("connection",function(socket){
     if(data === "ashun" && speed!=300){
       clearInterval(id);
       speed = 300;
-      setInterval(playGame,speed);
+      id = setInterval(playGame,speed);
     }else if(data === "dzmer" && speed!=400){
       clearInterval(id);
       speed = 400;  
-      setInterval(playGame,speed);
+      id = setInterval(playGame,speed);
     }else if(data === "garun" && speed!=200){
       clearInterval(id);
       speed = 200;  
-      setInterval(playGame,speed);
+      id = setInterval(playGame,speed);
     }else if(data === "amar" && speed!=100){
       clearInterval(id);
       speed = 100;  
-      setInterval(playGame,speed);
+      id = setInterval(playGame,speed);
     }
-    console.log(speed);
   })
   
 setInterval(()=>{
@@ -167,17 +169,25 @@ setInterval(()=>{
     predatorCount:predatorArr.length,
     witherCount:witherArr.length
   }
-  // console.log(statistics);
   io.emit("send statistics",statistics);
   fs.writeFile("state.txt", JSON.stringify(statistics),(err)=>{
     if (err) {
       console.log(err);
     }
   })
-  // console.log(speed);
 },speed)
 
-
-
+socket.on("send lightning", (t)=>{
+  if (t) {
+    let x1 = Math.floor(Math.random() * (matrix.length - 1));
+    let y1 = Math.floor(Math.random() * (matrix[0].length - 1));
+    matrix[y1][x1] = 8
+    let light=new Lightning(x1,y1);
+    setInterval(()=>{
+      light.create()
+    },1000)
+      
+    
+  }
 })
-// console.log(speed);
+})

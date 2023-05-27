@@ -1,8 +1,10 @@
+
 let socket=io();
 const ashun = document.getElementById("ashun")
 const dzmer = document.getElementById("dzmer")
 const garun = document.getElementById("garun")
 const amar = document.getElementById("amar")
+const lightning=document.getElementById("lightning")
 var side = 20;
 function setup() {
   createCanvas(40 * side, 40 * side);
@@ -26,6 +28,8 @@ function drawGame(matrix) {
         fill("#333e4f");
       } else if (matrix[i][j] == 7) {
         fill("#333e4f");
+      } else if (matrix[i][j] == 8) {
+        fill("#087fc9");
       } else if (matrix[i][j] == 0) {
         fill("#acacac");
       }
@@ -46,6 +50,14 @@ garun.addEventListener("click",()=>{
 amar.addEventListener("click",()=>{
   socket.emit("send signal", "amar")
 })
+lightning.addEventListener("click",()=>{
+  socket.emit("send lightning", true)
+})
+    // let x1 = Math.floor(Math.random() * (matrix.length - 1));
+    // let y1 = Math.floor(Math.random() * (matrix[0].length - 1));
+    // matrix[y1][x1] = 8;
+    // let light=new Lightning();
+    // light.create()
 socket.on("send matrix", drawGame)
 socket.on("send statistics", (statistics)=>{
   let grassData=document.getElementById("grassData");
