@@ -11,6 +11,7 @@ var Wither = require("./classWither");
 var Bullet = require("./classbullet");
 var Lightning = require("./classLightning");
 var fs=require("fs");
+var func=require("./func.js");
 
 app.use(express.static("."));
 
@@ -71,8 +72,8 @@ function generator(grass, grassEater, hardGrass, alleater, predator, wither, mat
   io.emit("send matrix", matrix);
 }
 
-// generator(15, 10, 10, 5, 7, 3, 40);
-generator(0, 0, 0, 0, 0, 0, 40);
+generator(15, 10, 10, 5, 7, 3, 40);
+// generator(15, 0, 0, 0, 0, 0, 40);
 
 
 function createObj() {
@@ -138,7 +139,6 @@ function playGame() {
 let speed=100
 let id = setInterval(playGame, speed)
 
-
 io.on("connection",function(socket){
   socket.on("send signal",(data)=>{
     if(data === "ashun" && speed!=300){
@@ -181,13 +181,26 @@ socket.on("send lightning", (t)=>{
   if (t) {
     let x1 = Math.floor(Math.random() * (matrix.length - 1));
     let y1 = Math.floor(Math.random() * (matrix[0].length - 1));
-    matrix[y1][x1] = 8
+    // if (matrix[y1][x1]==1) {
+    //   for (let i in grassArr) {
+    //     if (x1 == grassArr[i].x && y1 == grassArr[i].y) {
+    //       grassArr.splice(i, 1);
+    //       break;
+    //     }
+    //   }
+    // }
+    func(matrix[y1][x1],x1,y1);
+    matrix[y1][x1] = 0;
+    matrix[y1][x1] = 8;
     let light=new Lightning(x1,y1);
-    setInterval(()=>{
-      light.create()
-    },1000)
-      
-    
+    let s=setInterval(()=>{
+      if (light.create()==="null") {
+        light=null;
+        clearInterval(s);
+      }else{
+      light.create();
+      }
+    },100)
   }
 })
 })
